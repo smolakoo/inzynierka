@@ -140,6 +140,7 @@ def Load_excel_data():
         x= x_var.get()
         y= y_var.get()
         try:
+
             daneX=df[x].describe()
             daneY=df[y].describe()
 
@@ -151,8 +152,8 @@ def Load_excel_data():
         label5 = Label(top1, text='')
         label6= Label(top1, text='')
         try:
-            label5.config(text=f"Dane statystyczne dla kolumny:  \n {x} \n \n{daneX}")
-            label6.config(text=f"Dane stastystyczne dla kolumny: \n {y} \n \n{daneY}")
+            label5.config(text=f"Dane statystyczne dla kolumny:   {x}  {daneX}")
+            label6.config(text=f"Dane stastystyczne dla kolumny:  {y}  {daneY}")
         except UnboundLocalError:
             return None
         label5.pack(side="top")
@@ -174,9 +175,6 @@ def Load_excel_data():
             messagebox.showerror("Błąd", "Nie wybrano kolumn do zapisu.")
         except ValueError:
             messagebox.showerror("Błąd", "Nie wpisano nazwy pliku.")
-
-
-
 
 
 
@@ -213,7 +211,6 @@ def openData():
             top.withdraw()
             messagebox.showerror("Błąd", "Nie wybrano pliku do pobrania.")
             return None
-
 
     readfile.to_csv(filename+".csv", index = None, header = True)
     df = pd.DataFrame(pd.read_csv(filename+".csv"))
